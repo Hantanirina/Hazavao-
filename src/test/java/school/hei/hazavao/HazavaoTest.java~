@@ -1,0 +1,18 @@
+package school.hei.hazavao;
+
+import org.junit.jupiter.api.Test;
+import school.hei.hazavao.model.Hazavao;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+class HazavaoTest {
+
+    Hazavao hazavao = new Hazavao();
+
+    @Test
+    void teny_malagasy_soa_should_have_definition() {
+        String result = hazavao.apply("soa");
+        assertTrue(result.toLowerCase().contains("tsara") || result.toLowerCase().contains("fanazavana"),
+                "Tokony ahitana fanazavana ilay teny: " + result);
+    }
+}

@@ -26,8 +26,8 @@ repositories {
 
 java {
     group = 'school.hei.hazavao'
-    sourceCompatibility = '21'
-    targetCompatibility = '21'
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
 }
 
 configurations {
