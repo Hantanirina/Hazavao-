@@ -14,7 +14,7 @@ import java.util.function.Function;
 
 public class Hazavao implements Function<String, String> {
     private static final String API_URL = "https://api.openai.com/v1/chat/completions";
-    private static final String API_KEY = "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"; // sera donnée à l'examen
+    private static final String API_KEY = System.getenv("OPENAI_API_KEY");
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
@@ -42,7 +42,7 @@ public class Hazavao implements Function<String, String> {
 
             var client = HttpClient.newHttpClient();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
+            System.out.println("Response body : " + response.body());
             Map<?, ?> body = objectMapper.readValue(response.body(), Map.class);
             Map<?, ?> choice = (Map<?, ?>) ((List<?>) body.get("choices")).get(0);
             Map<?, ?> msg = (Map<?, ?>) choice.get("message");
@@ -50,7 +50,7 @@ public class Hazavao implements Function<String, String> {
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
-            return "Diso ny fangatahana.";
+            return "Diso ny fangatahana";
         }
     }
 
